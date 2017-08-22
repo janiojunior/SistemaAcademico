@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Sistema de Recursos Humanos</title>
+</h:head>
+<h:body>
+
+	<h3>.:Cadastro de Servidor:.</h3>
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputText value="Matrícula:" />
+			<h:inputText value="#{servidorController.servidor.matricula}" />
+
+			<h:outputText value="Nome:" />
+			<h:inputText value="#{servidorController.servidor.nome}" />
+
+			<h:outputText value="E-mail:" />
+			<h:inputText value="#{servidorController.servidor.email}" />
+		</h:panelGrid>
+
+
+		<h:commandButton value="Incluir" action="#{servidorController.salvar}" />
+	</h:form>
+
+	<h:dataTable value="#{servidorController.listaServidor}" var="objeto">
+		<h:column>
+			<f:facet name="header">Id</f:facet>
+    				#{objeto.id}
+    		</h:column>
+		<h:column>
+			<f:facet name="header">Matricula</f:facet>
+    				#{objeto.matricula}
+    		</h:column>
+		<h:column >
+			<f:facet name="header">Nome</f:facet>
+    				#{objeto.nome}
+    		</h:column>
+		<h:column>
+			<f:facet name="header">E-mail</f:facet>
+    				#{objeto.email}
+    		</h:column>
+	</h:dataTable>
+</h:body>
+</html>
