@@ -28,7 +28,7 @@ public abstract class Controller<T extends Model<? super T>> {
 //			validarEntidade();
 			setEntity(repository.save(getEntity()));
 			em.getTransaction().commit();
-//			cleanEntity();
+			clean();
 			Util.infoMessage(Config.INSERT_SUCCESS_MSG);
 		} catch (ValidationException e) {
 			em.getTransaction().rollback();
@@ -48,7 +48,7 @@ public abstract class Controller<T extends Model<? super T>> {
 //			validarEntidade();
 			setEntity(repository.save(getEntity()));
 			em.getTransaction().commit();
-//			cleanEntity();
+			clean();
 			Util.infoMessage(Config.UPDATE_SUCCESS_MSG);
 		} catch (ValidationException e) {
 			em.getTransaction().rollback();
@@ -111,7 +111,10 @@ public abstract class Controller<T extends Model<? super T>> {
 		}
 
 		return null;
-
+	}
+	
+	protected void clean() {
+		setEntity(null);
 	}
 
 }

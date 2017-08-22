@@ -24,6 +24,12 @@ public class AlunoController extends Controller<Aluno>{
 		return  entity;
 	}
 	
+	@Override
+	protected void clean() {
+		super.clean();
+		setListaAluno(null);
+	}
+	
 	
 	public List<Aluno> getListaAluno() {
 		if (listaAluno == null) {
@@ -37,6 +43,8 @@ public class AlunoController extends Controller<Aluno>{
 		}
 		return listaAluno;
 	}
+	
+	
 
 	public void setListaAluno(List<Aluno> listaServidor) {
 		this.listaAluno = listaServidor;

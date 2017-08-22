@@ -3,6 +3,7 @@
 	
 	<persistence-unit name="SistemaAcademico">
 		<class>br.unitins.sac.model.Aluno</class>
+		<class>br.unitins.sac.model.Cidade</class>
 		<class>br.unitins.sac.model.Model</class>
 		
 		<shared-cache-mode>NONE</shared-cache-mode>

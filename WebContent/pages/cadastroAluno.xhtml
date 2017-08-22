@@ -10,8 +10,8 @@
 <h:body>
 
 	<h3>.:Cadastro de Servidor:.</h3>
-	<h:form>
-		<h:panelGrid columns="2">
+	<h:form id="form">
+		<h:panelGrid id="pgDados" columns="2">
 			<h:outputText value="Matrícula:" />
 			<h:inputText value="#{alunoController.entity.matricula}" />
 
@@ -21,22 +21,26 @@
 		</h:panelGrid>
 
 
-		<h:commandButton value="Incluir" actionListener="#{alunoController.add}" />
-	</h:form>
+		<h:commandButton value="Incluir" actionListener="#{alunoController.add}" >
+			<f:ajax execute="pgDados" render = "form:pgDados form:dataTable"/>
+		</h:commandButton>
 
-	<h:dataTable value="#{alunoController.listaAluno}" var="objeto">
-		<h:column>
-			<f:facet name="header">Id</f:facet>
-    				#{objeto.id}
-    		</h:column>
-		<h:column>
-			<f:facet name="header">Matricula</f:facet>
-    				#{objeto.matricula}
-    		</h:column>
-		<h:column >
-			<f:facet name="header">Nome</f:facet>
-    				#{objeto.nome}
-    		</h:column>
-	</h:dataTable>
+
+		<h:dataTable id="dataTable" value="#{alunoController.listaAluno}" var="objeto">
+			<h:column>
+				<f:facet name="header">Id</f:facet>
+	    				#{objeto.id}
+	    		</h:column>
+			<h:column>
+				<f:facet name="header">Matricula</f:facet>
+	    				#{objeto.matricula}
+	    		</h:column>
+			<h:column >
+				<f:facet name="header">Nome</f:facet>
+	    				#{objeto.nome}
+	    		</h:column>
+		</h:dataTable>
+	
+	</h:form>	
 </h:body>
 </html>

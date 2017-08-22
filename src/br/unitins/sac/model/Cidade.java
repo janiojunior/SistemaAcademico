@@ -7,31 +7,24 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-public class Aluno extends Model<Aluno>{
-	
-	private static final long serialVersionUID = 5340998728426485061L;
+public class Cidade extends Model<Cidade> {
+
+	private static final long serialVersionUID = 684044324554894454L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqidaluno")
-	@SequenceGenerator(name = "seqidaluno", sequenceName = "seqidaluno", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqidcidade")
+	@SequenceGenerator(name = "seqidcidade", sequenceName = "seqidcidade", allocationSize = 1)
 	private Integer id;
-	private String matricula;
 	private String nome;
 
+	@Override
 	public Integer getId() {
 		return id;
 	}
 
+	@Override
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getMatricula() {
-		return matricula;
-	}
-
-	public void setMatricula(String matricula) {
-		this.matricula = matricula;
 	}
 
 	public String getNome() {
