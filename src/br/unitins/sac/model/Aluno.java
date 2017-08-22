@@ -4,8 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Aluno {
+public class Aluno extends br.unitins.sac.model.Entity<Aluno>{
 	
+	private static final long serialVersionUID = 5340998728426485061L;
+
 	@Id
 	private Integer id;
 	private String matricula;

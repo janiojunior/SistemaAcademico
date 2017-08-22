@@ -13,7 +13,7 @@ import br.unitins.sac.application.ApplicationException;
 import br.unitins.sac.application.ValidationException;
 import br.unitins.sac.model.Entity;
 
-public class Repository<T extends Entity> {
+public abstract class Repository<T extends Entity<? super T>> {
 
 	private final EntityManager entityManager;
 	private final Class<T> clazz;
@@ -21,8 +21,7 @@ public class Repository<T extends Entity> {
 	
 	public Repository(EntityManager em) {
 		entityManager = em;
-		clazz = null;
-//		clazz =  getModelClass();
+		clazz =  getModelClass();
 	}
 	
 	public Repository(EntityManager em, Class<T> clazz) {
@@ -30,7 +29,8 @@ public class Repository<T extends Entity> {
 		this.clazz = clazz;
 	}
 
-
+	protected abstract Class<T> getModelClass();
+	
 	public EntityManager geEntityManager() {
 		return entityManager;
 	}

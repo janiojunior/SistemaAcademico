@@ -15,7 +15,7 @@ import br.unitins.sac.factory.JPAFactory;
 import br.unitins.sac.model.Entity;
 import br.unitins.sac.repository.Repository;
 
-public abstract class Controller<T extends Entity> {
+public abstract class Controller<T extends Entity<? super T>> {
 	
 	protected EntityManager em;
 	protected T entity;
@@ -100,7 +100,7 @@ public abstract class Controller<T extends Entity> {
 
 		try {
 			Class clazz = Class.forName(pack + "repository." + getEntity().getClass().getSimpleName() + "Repository");
-			Constructor<T> constructor = clazz.getConstructor(EntityManager.class);
+			Constructor constructor = clazz.getConstructor(EntityManager.class);
 			
 			return (Repository<T>) constructor.newInstance(em);
 			
