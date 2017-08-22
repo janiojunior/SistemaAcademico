@@ -24,7 +24,7 @@ public class AlunoController extends Controller<Aluno>{
 	public List<Aluno> getListaAluno() {
 		if (listaAluno == null) {
 			em = JPAFactory.getEntityManager();
-			Query query = em.createQuery("Select s From Servidor s Order by s.id Desc");
+			Query query = em.createQuery("Select a From Aluno a Order by a.id Desc");
 			
 			listaAluno = query.getResultList();
 			
