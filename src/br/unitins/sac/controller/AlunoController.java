@@ -3,11 +3,15 @@ package br.unitins.sac.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.persistence.Query;
 
 import br.unitins.sac.factory.JPAFactory;
 import br.unitins.sac.model.Aluno;
 
+@ManagedBean
+@ViewScoped
 public class AlunoController extends Controller<Aluno>{
 
 	private Aluno entity;

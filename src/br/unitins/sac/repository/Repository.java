@@ -11,9 +11,9 @@ import org.eclipse.persistence.exceptions.DatabaseException;
 
 import br.unitins.sac.application.ApplicationException;
 import br.unitins.sac.application.ValidationException;
-import br.unitins.sac.model.Entity;
+import br.unitins.sac.model.Model;
 
-public abstract class Repository<T extends Entity<? super T>> {
+public abstract class Repository<T extends Model<? super T>> {
 
 	private final EntityManager entityManager;
 	private final Class<T> clazz;

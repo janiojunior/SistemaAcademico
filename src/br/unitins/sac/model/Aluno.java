@@ -7,13 +7,14 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-public class Aluno extends br.unitins.sac.model.Entity<Aluno>{
+public class Aluno extends Model<Aluno>{
 	
 	private static final long serialVersionUID = 5340998728426485061L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqidaluno")
 	@SequenceGenerator(name = "seqidaluno", sequenceName = "seqidaluno", allocationSize = 1)
+	
 	private Integer id;
 	private String matricula;
 	private String nome;

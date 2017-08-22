@@ -12,10 +12,10 @@ import br.unitins.sac.application.Config;
 import br.unitins.sac.application.Util;
 import br.unitins.sac.application.ValidationException;
 import br.unitins.sac.factory.JPAFactory;
-import br.unitins.sac.model.Entity;
+import br.unitins.sac.model.Model;
 import br.unitins.sac.repository.Repository;
 
-public abstract class Controller<T extends Entity<? super T>> {
+public abstract class Controller<T extends Model<? super T>> {
 	
 	protected EntityManager em;
 	protected T entity;
