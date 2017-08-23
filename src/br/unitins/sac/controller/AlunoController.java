@@ -11,6 +11,7 @@ import javax.persistence.Query;
 import br.unitins.sac.factory.JPAFactory;
 import br.unitins.sac.model.Aluno;
 import br.unitins.sac.model.Cidade;
+import br.unitins.sac.repository.AlunoRepository;
 
 @ManagedBean
 @ViewScoped
@@ -35,13 +36,8 @@ public class AlunoController extends Controller<Aluno>{
 	
 	public List<Aluno> getListaAluno() {
 		if (listaAluno == null) {
-			em = JPAFactory.getEntityManager();
-			Query query = em.createQuery("Select a From Aluno a Order by a.id Desc");
-			
-			listaAluno = query.getResultList();
-			
-			if (listaAluno == null)
-				listaAluno = new ArrayList<Aluno>();
+			AlunoRepository repository = new AlunoRepository(JPAFactory.getEntityManager());
+			listaAluno = repository.bucarTodos();
 		}
 		return listaAluno;
 	}

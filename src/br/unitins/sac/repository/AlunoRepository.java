@@ -1,7 +1,12 @@
 package br.unitins.sac.repository;
 
-import javax.persistence.EntityManager;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import br.unitins.sac.factory.JPAFactory;
 import br.unitins.sac.model.Aluno;
 
 public class AlunoRepository extends Repository<Aluno>{
@@ -13,6 +18,18 @@ public class AlunoRepository extends Repository<Aluno>{
 	@Override
 	protected Class<Aluno> getModelClass() {
 		return Aluno.class;
+	}
+	
+	public List<Aluno> bucarTodos() {
+		
+		Query query = geEntityManager().createQuery("Select a From Aluno a Order by a.id Desc");
+		List<Aluno> lista = query.getResultList();
+		
+		if (lista == null)
+			lista = new ArrayList<Aluno>();
+		
+		return lista;
+
 	}
 	
 }
