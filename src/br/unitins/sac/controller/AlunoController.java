@@ -24,8 +24,9 @@ public class AlunoController extends Controller<Aluno>{
 	
 	@Override
 	public Aluno getEntity() {
-		if (entity == null)
+		if (entity == null) {
 			entity = new Aluno();
+		}
 		return  entity;
 	}
 	

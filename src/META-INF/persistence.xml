@@ -9,6 +9,7 @@
 		<shared-cache-mode>NONE</shared-cache-mode>
 		
 		<properties>
+		
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:postgresql://localhost:5432/web2?useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8" />
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />

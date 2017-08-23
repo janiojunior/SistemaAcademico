@@ -4,16 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.unitins.sac.application.ValidationException;
-import br.unitins.sac.model.Aluno;
+import br.unitins.sac.model.Cidade;
 
-public class AlunoValidation implements Validation<Aluno> {
+public class CidadeValidation implements Validation<Cidade> {
 	List<String> listMessages;
 	
 	@Override
-	public void validate(Aluno t) throws ValidationException {
-		
-		if (t.getMatricula() == null || t.getMatricula().trim().equals(""))
-			getlistMessages().add("A matrícula deve ser informada!");
+	public void validate(Cidade t) throws ValidationException {
 		
 		if (t.getNome() == null || t.getNome().equals(""))
 			getlistMessages().add("O nome deve ser informado!");
