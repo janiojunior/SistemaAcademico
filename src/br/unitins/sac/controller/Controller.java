@@ -14,6 +14,7 @@ import br.unitins.sac.application.ValidationException;
 import br.unitins.sac.factory.JPAFactory;
 import br.unitins.sac.model.Model;
 import br.unitins.sac.repository.Repository;
+import br.unitins.sac.validation.Validation;
 
 public abstract class Controller<T extends Model<? super T>> {
 	
@@ -25,7 +26,7 @@ public abstract class Controller<T extends Model<? super T>> {
 			em = JPAFactory.getEntityManager();
 			Repository<T> repository = getRepository(em);
 			em.getTransaction().begin();
-//			validarEntidade();
+			validarEntidade();
 			setEntity(repository.save(getEntity()));
 			em.getTransaction().commit();
 			clean(actionEvent);
@@ -45,7 +46,7 @@ public abstract class Controller<T extends Model<? super T>> {
 			em = JPAFactory.getEntityManager();
 			Repository<T> repository = getRepository(em);
 			em.getTransaction().begin();
-//			validarEntidade();
+			validarEntidade();
 			setEntity(repository.save(getEntity()));
 			em.getTransaction().commit();
 			clean(actionEvent);
@@ -91,6 +92,16 @@ public abstract class Controller<T extends Model<? super T>> {
 	
 	public void setEntity(T entity) {
 		this.entity = entity;
+	}
+	
+	public abstract Validation<T> getValidation();
+	
+	public void validarEntidade() throws ValidationException {
+		if (getValidation() == null) {
+			System.out.println("Método validate() da classe '" + getClass().getSimpleName() + "' não foi implementado");
+			throw new ValidationException("Método validate() da classe '" + getClass().getSimpleName() + "' não foi implementado");
+		}
+		getValidation().validate(getEntity());
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })

@@ -12,6 +12,8 @@ import br.unitins.sac.factory.JPAFactory;
 import br.unitins.sac.model.Aluno;
 import br.unitins.sac.model.Cidade;
 import br.unitins.sac.repository.AlunoRepository;
+import br.unitins.sac.validation.AlunoValidation;
+import br.unitins.sac.validation.Validation;
 
 @ManagedBean
 @ViewScoped
@@ -33,6 +35,10 @@ public class AlunoController extends Controller<Aluno>{
 		setListaAluno(null);
 	}
 	
+	@Override
+	public Validation<Aluno> getValidation() {
+		return new AlunoValidation();
+	}
 	
 	public List<Aluno> getListaAluno() {
 		if (listaAluno == null) {
@@ -58,6 +64,8 @@ public class AlunoController extends Controller<Aluno>{
 		}
 		return listaCidade;
 	}
+
+	
 
 	
 

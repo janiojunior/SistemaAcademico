@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import br.unitins.sac.factory.JPAFactory;
 import br.unitins.sac.model.Cidade;
+import br.unitins.sac.validation.Validation;
 
 @ManagedBean
 @ViewScoped
@@ -24,6 +25,11 @@ public class CidadeController extends Controller<Cidade> {
 		return  entity;
 	}
 	
+	@Override
+	public Validation<Cidade> getValidation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	public List<Cidade> getListaCidade() {
 		if (listaCidade == null) {
@@ -41,6 +47,5 @@ public class CidadeController extends Controller<Cidade> {
 	public void setListaCidade(List<Cidade> listaServidor) {
 		this.listaCidade = listaServidor;
 	}
-	
 
 }
