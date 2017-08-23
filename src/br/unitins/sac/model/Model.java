@@ -62,6 +62,23 @@ public abstract class Model<T> implements Serializable, Cloneable{
 	private void preUpdate() {
 		setDataAlteracao(new Date());
 	}
+	
+	@Override
+	public boolean equals(Object obj){
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Model))
+			return false;
+		Model other = (Model) obj;
+		if (getId() == null){
+			if (other.getId() != null)
+				return false;
+		} else if (!getId().equals(other.getId()))
+			return false;
+		return true;
+	}
 
 
 }

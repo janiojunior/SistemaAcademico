@@ -4,11 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-public class Aluno extends Model<Aluno>{
-	
+public class Aluno extends Model<Aluno> {
+
 	private static final long serialVersionUID = 5340998728426485061L;
 
 	@Id
@@ -17,6 +19,10 @@ public class Aluno extends Model<Aluno>{
 	private Integer id;
 	private String matricula;
 	private String nome;
+
+	@ManyToOne
+	@JoinColumn(name = "idCidade", nullable = true)
+	private Cidade cidade;
 
 	public Integer getId() {
 		return id;
@@ -40,6 +46,14 @@ public class Aluno extends Model<Aluno>{
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public Cidade getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
 	}
 
 }

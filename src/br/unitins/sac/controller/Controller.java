@@ -20,7 +20,7 @@ public abstract class Controller<T extends Model<? super T>> {
 	protected EntityManager em;
 	protected T entity;
 	
-	public void add(ActionEvent actionEvent) {
+	public void insert(ActionEvent actionEvent) {
 		try {
 			em = JPAFactory.getEntityManager();
 			Repository<T> repository = getRepository(em);
@@ -28,7 +28,7 @@ public abstract class Controller<T extends Model<? super T>> {
 //			validarEntidade();
 			setEntity(repository.save(getEntity()));
 			em.getTransaction().commit();
-			clean();
+			clean(actionEvent);
 			Util.infoMessage(Config.INSERT_SUCCESS_MSG);
 		} catch (ValidationException e) {
 			em.getTransaction().rollback();
@@ -48,7 +48,7 @@ public abstract class Controller<T extends Model<? super T>> {
 //			validarEntidade();
 			setEntity(repository.save(getEntity()));
 			em.getTransaction().commit();
-			clean();
+			clean(actionEvent);
 			Util.infoMessage(Config.UPDATE_SUCCESS_MSG);
 		} catch (ValidationException e) {
 			em.getTransaction().rollback();
@@ -70,7 +70,7 @@ public abstract class Controller<T extends Model<? super T>> {
 			em.getTransaction().begin();
 			repository.remove(t);
 			em.getTransaction().commit();
-//			cleanEntity();
+			clean(actionEvent);
 			Util.infoMessage(Config.DELETE_SUCCESS_MSG);
 		} catch (ApplicationException e) {
 			em.getTransaction().rollback();
@@ -113,7 +113,7 @@ public abstract class Controller<T extends Model<? super T>> {
 		return null;
 	}
 	
-	protected void clean() {
+	public void clean(ActionEvent actionEvent) {
 		setEntity(null);
 	}
 
